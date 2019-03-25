@@ -1,0 +1,2156 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>JavaScript - 101</title>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/monokai-sublime.css">
+		<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+		<link rel='stylesheet' href='lib/font/devicons/devicons.css'>
+		<style type="text/css">
+		.devicons-javascript{color:#f5de19}
+		.devicons-html5{color:#e44f26}
+		.devicons-css3{color:#1572b6}
+		.devicons-npm{color:#a23332}
+		.devicons-sass{color:#cd6799}
+		</style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<div><img src="img/js_logo.png " alt="" style="width:18%;"></div>
+					<h1 style="margin-bottom:100px;font-size:50px;letter-spacing:normal">JavaScript - 101</h1>
+					<p>2019. 03. 27</p>
+					<p>서비스 개발1팀 UI파트 - 김재호</p>
+				</section>
+
+				<section>
+					<h2>The Agenda</h2>
+					<ul>
+						<li>JavaScript 소개</li>
+						<li>JavaScript 시작하기</li>
+						<li>변수 (Variable)</li>
+						<li>배열 (Array)</li>
+						<li>객체 (Object)</li>
+						<li>함수 (Function)</li>
+						<li>유효범위 (Scope)</li>
+						<li>객체지향 프로그래밍 (OOP)</li>
+						<li>jQuery</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>JavaScript 소개</h2>
+					</section>
+					<section>
+						<h2>JavaScript?</h2>
+						<div><img src="img/html-css-javascript.png " alt="" style="width:40%;"></div>
+						<ul style="margin-top:20px">
+							<li>HTML과 CSS는 정적인 언어</li>
+							<li>JavaScript는 HTML과 CSS로 만들어진 웹페이지를 동적으로 변경해주는 언어</li>
+							<li>HTML, CSS 기본적인 선행학습 필요</li>
+							<li>작성한 코드를 브라우저에서 바로 실행 가능</li>
+						</ul>
+					</section>
+					<section>
+						<h2>JavaScript의 역할</h2>
+						<ul>
+							<li>HTML 엘리먼트 추가/삭제 및 CSS 스타일 변경</li>
+							<li>폼 유효성 검증</li>
+							<li>사용자와의 상호작용 (마우스, 키보드, 터치)</li>
+							<li>웹 브라우저 쿠키 설정/조회</li>
+							<li>AJAX 이용한 웹 서버와 통신</li>
+						</ul>
+					</section>
+
+					<!--
+					<section>
+						<h2>새로운 자바스크립트 (ECMAScript 6)</h2>
+						<div style="display:flex;align-items:center;justify-content:center;margin:50px 0">
+							<div style="max-width:50%;"><img src="img/es6.png" alt="" style="width:30%"></div>
+							<div style="max-width:50%;"><img src="img/babel.png" alt="" style="width:50%"></div>
+						</div>
+						<ul>
+							<li>표준화된 Javascript 버전 (표준의 6번째 에디션, ECMAScript2015)</li>
+							<li>let, const, Arrow Functions, Classes, Module system, Promise...</li>
+							<li>IE를 제외한 대부분의 모던 브라우저는 지원 <a href="http://kangax.github.io/compat-table/es6/" target="_blank">(ES6 호환성)</a></li>
+							<li>ES6코드를 ES5코드로 변환 Transpiler 사용 <a href="http://babeljs.io/" target="_blank">(Babel)</a></li>
+						</ul>
+					</section>
+					 -->
+
+
+					<section>
+						<h2>과거 JavaScript는?</h2>
+						<p>초창기 웹페이지의 보조적인 기능을 수행하기 위한 용도로 사용</p>
+						<!-- <div style="display:flex;align-items:center;justify-content:center;margin:50px 0">
+							<div style="max-width:50%;"><img src="img/netscape.png" alt="" style="width:50%"></div>
+							<div style="max-width:50%;"><img src="img/ie.png" alt="" style="width:48%"></div>
+							<div style="max-width:50%;"><img src="img/naver_daum.png" alt=""></div>
+						</div> -->
+						<ul>
+							<li>1995년 브렌던 아이크(Brendan Eich) 넷스케이프 지원<br>모카 -> 라이브스크립트 -> 자바스크립트</li>
+							<li>국제 표준화 단체인 ECMA International에서 표준화 진행 (ECMAScript)</li>
+							<li>크로스 브라우징, 보안 취약점 문제</li>
+							<li>전문적이지 못한 인식 (Copy & Paste)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>JavaScript 환경 변화</h2>
+						<ul>
+							<li>데이터의 유형이 텍스트 -> 이미지 -> 미디어로 진화</li>
+							<li>과거에 서버에서 담당하던 역할들이 상당 부분 프론트 이동</li>
+						</ul>
+
+						<!-- 웹이 나오게된 배경 중 하나가 문서 표현 및 전달하기 위한 기술이 중심이었다.
+						이후 웹은 쇼핑이나 뱅킹 등 기존에 오프라인으로만 가능하던 여러 분야에서 사용되기 시작하면서 다양한 분야에서 폭넓게 활용되기 시작했다. -->
+
+						<div style="display:flex;align-items:center;justify-content:center;margin:50px 0">
+							<div style="max-width:50%;margin:0 5px"><span style="display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:100%;background:#fff"><img src="img/ajax.png" alt="" style="width:80%"></span></div>
+							<div style="max-width:50%;margin:0 5px"><span style="display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:100%;background:#fff"><img src="img/jquery.png" alt=""></span></div>
+							<div style="max-width:50%;margin:0 5px"><span style="display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:100%;background:#fff"><img src="img/html5.png" alt="" style="width:70%"></span></div>
+							<div style="max-width:50%;margin:0 5px"><span style="display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:100%;background:#fff"><img src="img/nodejs.png" alt="" style="width:80%"></span></div>
+							<div style="max-width:50%;margin:0 5px"><span style="display:flex;align-items:center;justify-content:center;width:150px;height:150px;border-radius:100%;background:#fff"><img src="img/es6.png" alt="" style="width:65%"></span></div>
+						</div>
+						<ul>
+							<li>Ajax - 전체 페이지를 다시 렌더링하지 않고 변경되는 부분만 갱신</li>
+							<li>jQuery - 보다 쉽게 DOM을 핸들링</li>
+							<li>HTML5 - 마크업, JavaScript API를 강화</li>
+							<li>NodeJS - 서버 개발 가능, 더 많은 개발자들이 자바스크립트 사용</li>
+							<li>ECMAScript2015 (ES6) - 언어로서의 완성도가 높아짐</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h2>현재 자바스크립트는?</h2>
+						<p>브라우저에서만 사용하는 용도를 벗어나 다양한 환경에서 폭넓게 활용</p>
+
+						<div style="margin:40px 0"><img src="img/js_all.png" alt=""></div>
+						<ul>
+							<li>MeanStack (Full Stack Javascript Framework)</li>
+							<li>클라이언트 / 서버 / 데이터베이스 모두 자바스크립트 기반 (JSON 형태로 통신)</li>
+							<li>모바일 앱(iOS & Android), 데스크탑 앱</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h2>SPA (Single Page Application)</h2>
+						<div><img src="img/react_angular_vue.png" alt="" style="width:58%"></div>
+						<ul>
+							<li>PC -> 모바일 사용자의 증가 (트래픽 감소와 속도, 사용성, 반응성 이슈)</li>
+							<li>프론트엔드 프레임워크의 강화 (React, Angular, Vue)</li>
+							<li>필요한 모든 정적 리소스를 최초에 한번 다운로드</li>
+							<li>페이지 이동없이 고속으로 화면 전환</li>
+							<li>네이티브 앱과 유사한 사용자 경험 제공</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>PWA (Progressive Web Apps)</h2>
+						<p>최적화된 웹 성능에 모바일의 Native 기능을 결합한 최신 웹 앱</p>
+						<div><img src="img/unnamed.gif" alt=""></div>
+						<ul>
+							<li>모바일 앱의 단점 (개발, 빌드, 배포, 검색 다운로드, 설치)</li>
+							<li>홈 화면 아이콘 추가, 오프라인 서비스, 푸시 알림 등 웹에서도 가능하게 하는 기술<br>(Service Worker)</li>
+						</ul>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>JavaScript 시작하기</h2>
+					</section>
+
+					<section>
+						<h2>코드 작성 준비</h2>
+						<ul>
+							<li>HTML 파일 head, body 태그 안에 작성</li>
+							<li>script 태그를 사용하여 외부 js 파일 연결</li>
+						</ul>
+						<pre><code class="html">
+&lt;!-- 내부 스크립트 --&gt;
+&lt;script&gt;
+	//코드 작성
+	...
+&lt;/script&gt;
+                        </code></pre>
+                        <pre><code class="html">
+&lt;!-- 외부 스크립트 --&gt;
+&lt;script src="ui-base.js"&gt;&lt;/script&gt;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>script 태그 위치</h2>
+						<p>전통적인 방법으로 head 안에 선언</p>
+						<pre><code class="html">
+&lt;head&gt;
+	...
+	&lt;script src="jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+	&lt;script src="ui-base.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>브라우저 동작 원리</h2>
+						<p>렌더링 엔진, 자바스크립트 엔진</p>
+					</section>
+
+					<section>
+						<h2>렌더링 엔진</h2>
+						<ul>
+							<li>서버로부터 받은 HTML, CSS</li>
+							<li>렌더링 엔진의 HTML 파서, CSS 파서에 의해</li>
+							<li>DOM, CSSOM 트리가 만들어지고 렌더 트리로 결합</li>
+							<li>렌더 트리를 기반으로 브라우저는 웹페이지를 표시</li>
+						</ul>
+
+						<img src="img/webkit_flow.png" alt="" style="margin-top: 40px">
+					</section>
+
+
+					<section>
+						<h2>자바스크립트 엔진</h2>
+						<p>JS로 작성한 코드를 해석하고 실행하는 인터프리터</p>
+						<ul>
+							<li>HTML 파서가 DOM 생성중 스크립트 태그를 만나면</li>
+							<li>자바스크립트 로드와 코드를 실행시키기 위해</li>
+							<li>자바스크립트 엔진에게 제어 권한을 넘겨 주게 됨</li>
+							<li>HTML 파서가 중단되는 시점 발생</li>
+						</ul>
+						<p>사용자 입장에서 화면 표시 지연</p>
+
+						<!-- HTML 문서를 읽는 과정에서 자바스크립트 로드와 실행을 위해<br>중단되는 시점이 발생
+						스크립트 로딩이 완료될 때 까지 HTML 해석 중지 -->
+
+						<img src="img/blocking_script.png" alt="" width="70%" style="margin-top: 40px">
+					</section>
+
+
+					<section>
+						<ul>
+							<li>DOM 트리가 생성되기 전 스크립트에서 DOM을 조작 할 경우 문제 발생</li>
+							<li>HTML, CSS를 통해 화면이 모두 표시된 후 스크립트를 실행하는 것이<br>더 빠르게 느껴지기 때문에</li>
+							<li>script 태그는 body 태그 제일 아래에 놓는 것이 좋음</li>
+						</ul>
+						<!-- <p>가급적 body 요소 마지막에 선언하는 것을 권장</p> -->
+						<pre><code class="html">
+&lt;body&gt;
+	...
+	&lt;script src="jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+	&lt;script src="ui-base.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>async / defer 속성</h2>
+						<p>HTML 해석을 멈추지 않고 동시에 스크립트 로드 (IE 10 이상 지원)</p>
+					</section>
+
+
+					<section>
+						<h2>async</h2>
+						<p>스크립트가 다운로드 완료되는 즉시 실행<br>ui-base2는 ui-base1 보다 먼저 실행될 수 있음 (의존성 고려)</p>
+						<pre><code class="html">
+&lt;script async src="ui-base1.js"&gt;&lt;/script&gt;
+&lt;script async src="ui-base2.js"&gt;&lt;/script&gt;
+                        </code></pre>
+
+                        <div style="text-align:center;background:#fff"><img src="img/Async-Execution.png" alt=""></div>
+					</section>
+
+
+					<section>
+						<h2>defer</h2>
+						<p>HTML 해석이 모두 완료된 후 스크립트가 실행 (순서대로)</p>
+
+						<pre><code class="html">
+&lt;script async src="ui-base1.js"&gt;&lt;/script&gt;
+&lt;script async src="ui-base2.js"&gt;&lt;/script&gt;
+                        </code></pre>
+
+                        <div style="text-align:center;background:#fff"><img src="img/Defer-Execution.png" alt=""></div>
+					</section>
+
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>변수와 자료형</h2>
+					</section>
+
+
+					<section>
+						<h2>변수 선언</h2>
+						<ul>
+							<li>var 키워드로 선언</li>
+							<li>var는 ES6 이전까지 유일한 변수 선언 방법</li>
+							<li>ES6에서 변수 let, 상수 const를 지원</li>
+						</ul>
+						<pre><code class="js">
+var ssg;
+
+var ssg, emall, smll; //콤마를 이용해 한번에 선언
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>변수 초기화</h2>
+						<ul>
+							<li>선언과 동시에 초기화</li>
+							<li>초기값을 지정하지 않으면 해당 값은 undefined</li>
+						</ul>
+						<pre><code class="js">
+var ssg = '쓱';
+
+var emall;
+console.log(emall); //undefined
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>명명 규칙</h2>
+						<ul>
+							<li>시작문자는 영문자, _, $ 중 하나로 시작</li>
+							<li>숫자로 시작 할 수 없음</li>
+							<li>대소문자 구분 (완전히 다른변수)</li>
+							<li>이미 정의된 예약어 사용 안됨 (var, function, new, typeof..)</li>
+						</ul>
+						<pre><code class="js">
+
+var *count = 0; //SyntaxError 시작문자 특수기호 _ 또는 $ 만 사용
+var _count = 0;
+
+var 1st = 0; //SyntaxError 숫자시작
+
+var emartMall = 0;
+console.log(emartmall); //SyntaxError 대소문자 구분
+
+var function = 0; //SyntaxError 예약어 사용
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>명명 기법</h2>
+						<ul>
+							<li>변수의 데이터 타입과 용도에 따라 접두사와 함께 붙여 사용 (헝가리안 기법)</li>
+							<li>시작은 소문자이며 뒤에 오는 단어 첫번째는 대문자를 사용 (카멜 기법) var switchNum;</li>
+							<li>단어의 첫문자를 대문자로 표기 (파스칼 기법) var SwitchNum;</li>
+							<li>시작문자는 소문자이며 단어연결시 언더스코어 사용 (언더스코어 기법)  var switch_num;</li>
+						</ul>
+
+						<p>보통 카멜기법은 변수 또는 함수선언시 주로 사용되며 파스칼기법은 클래스 생성시 사용</p>
+
+						<table>
+							<tr>
+								<th>데이터 타입</th>
+								<th>예시</th>
+							</tr>
+							<tr>
+								<td>Array</td>
+								<td>aUsers</td>
+							</tr>
+							<tr>
+								<td>String</td>
+								<td>sCompanyName</td>
+							</tr>
+							<tr>
+								<td>Number</td>
+								<td>nTotalCount</td>
+							</tr>
+							<tr>
+								<td>Boolean</td>
+								<td>bFlag, bActive</td>
+							</tr>
+						</table>
+					</section>
+
+
+					<section>
+						<h2>변수 사용 시 주의할 점</h2>
+						<p>다른 언어와 다른 JavaScript 특성을 이해하고 변수 사용에 주의</p>
+					</section>
+
+
+					<section>
+						<h2>중복 선언</h2>
+						<p>동일한 이름으로 변수 선언 가능, 의도하지 않은 변수값 변경</p>
+						<pre><code class="js">
+var mall = 'ssg';
+
+var mall = 'emall'; //중복 선언 시 재정의
+console.log(mall); //emall
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>변수 선언 없이 사용</h2>
+						<p>var 생략시 암묵적으로 변수를 전역화할 수 있으므로 사용하지 않는 것이 좋음</p>
+						<pre><code class="js">
+mall = 'ssg';
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>변수 선언 전 사용</h2>
+						<p>변수가 선언된 위치보다 위에서 참조 가능</p>
+						<pre><code class="js">
+function myFunction() {
+	//Why no ReferenceError?
+	console.log(foo); //undefined
+
+	if(true) {
+		var foo = 123;
+		console.log(foo); //123
+	}
+}
+myFunction();
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>변수 호이스팅</h2>
+						<p>코드를 해석하기 전 var 선언 범위를 함수의 상단으로 끌어 올림 (Hoisting)<br>변수는 함수 최상위에서 선언</p>
+						<pre><code class="js">
+function myFunction() {
+	//var foo;
+	console.log(foo); //undefined
+
+	if(true) {
+		var foo = 123;
+		console.log(foo); //123
+	}
+}
+myFunction();
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>데이터 타입</h2>
+						<ul>
+							<li>기본 자료형 - Number, String, Boolean, undefined, null, Symbol (ES6 추가)</li>
+							<li>객체형 - Object, Function, Array</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h2>동적 타입 언어</h2>
+						<!-- <p>Javascript는 명시적인 타입정의가 없습니다. int나 String같이 타입을 명시해서 변수를 정의하지 않고 그냥 var타입으로 정의하면 Javascript가 알아서 적절한 타입을 지정합니다. 명시적인 타입이 없다는건 때론 타입때문에 헷갈리기도 하고 원치 않는 결과가 나타나기도 합니다.</p> -->
+						<ul>
+							<li>느슨한 타입 언어</li>
+							<li>변수 선언 시 타입을 미리 선언할 필요 없음</li>
+							<li>값을 할당 할 때 데이터 타입이 결정</li>
+							<li>한 변수에 다른 타입의 값으로 할당 가능</li>
+						</ul>
+						<pre><code class="js">
+var mallCode = 6005; //숫자형 대입
+
+mallCode = 'ssg'; //문자형 대입
+
+mallCode = true; //논리형 대입
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>데이터 타입 검사</h2>
+						<p>typeof 자바스크립트 자료형의 데이터 타입 확인</p>
+						<pre><code class="js">
+var foo = 3;
+console.log(typeof foo);  //number
+
+foo = 'Hi';
+console.log(typeof foo);  //string
+
+foo = true;
+console.log(typeof foo);  //boolean
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>연산자</h2>
+						<p>기본적으로 다른 언어와 동일한 연산자 사용</p>
+					</section>
+
+
+					<section>
+						<h2>+ 연산자</h2>
+						<p>사칙연산을 이용해서 데이터를 연산하는 경우 때에 따라서 자료형 변환 발생</p>
+						<p>+ 연산자는 숫자끼리의 연산이 아니면 문자열로 자동형변환이 일어나는 것을 알 수 있다.</p>
+						<pre><code class="js">
+console.log(10 + 20); //30 숫자 + 숫자 = 숫자
+console.log('10' + 20) //1020 문자열 + 숫자 = 문자열
+console.log(10 + '20'); //1020 숫자 + 문자열 = 문자열
+console.log('10' + '20'); //1020 문자열 + 문자열 = 문자열
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>+ 이외의 연산자</h2>
+						<p>+ 연산자를 제외한 사칙 연산자는<br>피연산자에 문자열이 있을 경우 숫자형으로 자동형변환</p>
+						<pre><code class="js">
+console.log('20' - 10); //10
+console.log('20' * 10); //200
+console.log('20' / 10); //2
+console.log('20' % 3); //2
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>강제형변환</h2>
+						<p>자료형이 자동으로 변환되는 것 이외에 강제로 자료형을 변환</p>
+						<ul>
+							<li>Number()함수는 자료형을 숫자로 바꾸어 반환</li>
+							<li>String()함수는 자료형을 문자열로 바꾸어 반환</li>
+						</ul>
+						<pre><code class="js">
+var input = '10';
+
+console.log(input + 10); //1010 문자열 + 숫자
+console.log(Number(input) + 10); //20 숫자 + 숫자
+                        </code></pre>
+					</section>
+
+
+
+					<section>
+						<h2>NaN</h2>
+						<p>NaN(Not a Number)은 숫자이긴 숫자인데 자바스크립트로 나타낼 수 없는 숫자를 의미</p>
+						<p>문자열을 Number()함수를 이용하여 숫자로 변경할려고 한다면 NaN이 반환</p>
+						<p>문자로 시작하면 형변환을 해도 값을 인식하지 못한다.</p>
+						<pre><code class="js">
+var str = 'Hello';
+
+console.log(Number(str)); //NaN
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>일치 연산자</h2>
+						<ul>
+							<li>==, != 값이 같으면 true</li>
+							<li>===, !== 값이 같고 데이터 타입 모두 같으면 true</li>
+							<li>== 보다는 === 를 쓰는 것을 권장</li>
+						</ul>
+
+						<pre><code class="js">
+0 == '0'     //true
+0 == false   //true
+1 == true    //true
+
+
+0 === '0'     //false
+0 === false   //false
+1 === true    //false
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>삼항 연산자</h2>
+						<p>조건문 ? 참일 때 실행 : 거짓일 때 실행</p>
+
+						<pre><code class="js">
+//IF 문으로 표현한 조건문
+if (a > b) {
+   c = 10;
+} else {
+   c = 20;
+}
+
+//삼항 연산자
+c = (a > b) ? 10 : 20;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>짧은 조건문</h2>
+						<p>논리 연산자인 &&와 ||를 이용하여 조건문 작성</p>
+
+						<pre><code class="js">
+//왼쪽 변의 조건문이 거짓 일 때 오른쪽 변이 실행
+true || alert('실행A');
+false || alert('실행B');
+
+
+//왼쪽 변이 참이면 오른쪽 변이 실행
+true && alert('실행A');
+false && alert('실행B');
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>템플릿 문자열</h2>
+						<p>문자열을 연결하거나, 문자열 사이에 숫자를 이용하여 연산을 하여 결과 표시</p>
+						<ul>
+							<li>ES5에서 문자열을 변수와 함께 활용할때 + 연산자 사용</li>
+							<li>ES6는 백틱(backtick) 문자 `를 사용</li>
+						</ul>
+
+						<pre><code class="js">
+var first = 'Ung-mo';
+var last = 'Lee';
+
+//ES5
+//따옴표를 사용하고자 할때 -> \" 또는 \'
+//줄바꿈을 하고싶을때 -> \n
+console.log('My name is ' + first + ' ' + last + '.');
+
+//ES6
+console.log(`My name is ${first} ${last}.`);
+                        </code></pre>
+					</section>
+
+
+
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>배열 (Array)</h2>
+					</section>
+
+					<section>
+						<h2>배열 생성</h2>
+						<p>여러 개의 데이터 값을 하나의 변수에 할당할 때 사용</p>
+						<pre><code class="js">
+	var arr1 = []; //배열 리터럴 사용
+	var arr2 = new Array();
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>배열 요소 추가</h2>
+						 <ul>
+						 	<li>필요한 index 위치에 값 할당 (순서에 맞게 값을 할당할 필요는 없음)</li>
+						 	<li>값이 할당되지 않은 index 요소의 값은 empty</li>
+						 	<li>배열의 길이는 최종 index 기준으로 산정</li>
+						 </ul>
+
+						<pre><code class="js">
+	//배열 요소에 index로 값 할당
+	var fruits = [];
+	fruits[0] = '사과';
+	fruits[1] = '배';
+	fruits[2] = '바나나';
+
+	//배열을 생성과 동시에 요소에 값 할당
+	var fruits = ['사과', '배', '바나나'];
+
+	var arr = [];
+	arr[0] = 'one';
+	arr[3] = 'three';
+	arr[7] = 'seven';
+	console.log(arr); //["one", empty × 2, "three", empty × 2, "seven"]
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>배열 요소 열거</h2>
+						<p>배열 뒤 [ ]안에 index를 넣어 요소에 접근</p>
+						<pre><code class="js">
+	var fruits = ["사과", "배", "바나나"];
+	console.log(fruits[0]); //사과
+	console.log(fruits[1]); //배
+	console.log(fruits[2]); //바나나
+
+	//요소 갯수 (배열 길이)
+	console.log(fruits.length); //3
+
+	//for문 사용
+	for (var i = 0; i < fruits.length; i++) {
+		console.log(i, fruits[i]); //0 사과, 1 배, 2 바나나
+	}
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>배열 메서드 (Array method)</h2>
+						<ul>
+							<li>join – 문자열로 리턴</li>
+							<li>reverse – 거꾸로 변경</li>
+							<li>sort – 배열 정렬</li>
+							<li>concat – 배열 이어 붙임</li>
+							<li>slice – 부분 배열 반환</li>
+							<li>splice – 삭제/추가</li>
+							<li>push, pop – 맨뒤 추가/삭제</li>
+							<li>shift, unshift – 맨앞 추가/삭제</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>객체 (Object)</h2>
+					</section>
+
+
+					<section>
+						<h2>예) 자동차 객체</h2>
+						<ul>
+							<li>현실세계의 객체를 프로그래밍적으로 접근하여 접목시킨 것을 객체라고 표현</li>
+							<li>모든 자동차는 같은 속성을 가지고 있지만 그 값은 각각 다르고, 다양한 기능을 수행</li>
+						</ul>
+
+						<!-- <ul>
+							<li>속성(Property) - 이름, 모델, 무게, 색상</li>
+							<li>메서드(Method) - 출발하다(), 정지하다(), 속력을 올리다(), 속력을 줄이다()</li>
+						</ul>
+						자바스크립트에는 TV 를 켜다와 같은 여러 다양한 기능들이 있는데 이러한 기능들을 메서드(Method)
+						 -->
+
+						<table style="margin-top:50px">
+							<tr>
+								<th style="width:30%">Object</th>
+								<th style="width:35%">Properties</th>
+								<th style="width:35%">Methods</th>
+							</tr>
+							<tr>
+								<td rowspan="4" style="vertical-align:middle;text-align:left;border-bottom-width:0"><img src="img/genesis.png" alt=""></td>
+								<td>car.name = 제네시스</td>
+								<td>car.start()</td>
+							</tr>
+							<tr>
+								<td>car.model = G70</td>
+								<td>car.stop()</td>
+							</tr>
+							<tr>
+								<td>car.weight = 1,695kg</td>
+								<td>car.speedUp()</td>
+							</tr>
+							<tr>
+								<td>car.color = white</td>
+								<td>car.slowDown()</td>
+							</tr>
+						</table>
+					</section>
+
+
+					<section>
+						<h2>객체 생성</h2>
+						<ul>
+							<li>자바스크립트는 객체 기반 언어</li>
+							<li>기본자료형을 제외한 나머지 함수, 배열, 정규표현식 등 모두 객체</li>
+						</ul>
+
+						<pre><code class="js">
+var car = {}; //객체 리터럴 사용
+var car = new Object();
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>객체 속성 (Property)</h2>
+						<ul>
+							<li>객체는 Key(속성명), Value(값)로 구성</li>
+							<li>빈 객체를 생성하고 변수와 함수를 그 안에 추가</li>
+							<li>이때 선언된 변수를 '프로퍼티', 함수는 '메서드'</li>
+						</ul>
+						<pre><code class="js">
+//객체 생성 후 프로퍼티를 추가
+var car = {};
+car.name = '제네시스';
+car.model = 'G70';
+car.weight = '1,695kg';
+car.color = 'white';
+
+//객체 생성과 동시에 프로퍼티를 추가
+var car = {
+	name: '제네시스',
+	model: 'G70',
+	weight: '1,695kg',
+	color: 'white'
+};
+console.log(car.name); //제네시스
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>객체 메서드 (Method)</h2>
+						<p>메서드 내부의 this는 해당 메소드를 호출한 객체에 바인딩</p>
+						<!-- 이러한 개발 패턴은 자바스크립트 개발에서 자주 사용 -->
+						<pre><code class="js">
+var car = {
+	name: '제네시스',
+	model: 'G70',
+	weight: '1,695kg',
+	getName: function() {
+		return this.name;
+	}
+};
+
+var newCar = {
+	name: 'BMW'
+};
+
+newCar.getName = car.getName;
+
+car.getName(); //this는 car, this.name -> 제네시스
+newCar.getName(); //this는 newCar, this.name -> BMW
+                        </code></pre>
+					</section>
+
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>원시 타입과 참조 타입</h2>
+						<!-- JavaScript에는 값으로 복사된 유형과 참조로 복사한 유형 -->
+					</section>
+
+
+					<section>
+						<h2>원시 타입 (Primitives)</h2>
+						<p>값(value)으로 전달되는 데이터 타입</p>
+						<!--  변수에 할당될 때 메모리 상에 고정된 크기로 저장되고 해당 변수가 원시 데이터 값을 보관 -->
+
+						<ul>
+							<li>Number</li>
+							<li>String</li>
+							<li>Boolean</li>
+							<li>Symbol</li>
+							<li>undefined</li>
+							<li>null</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Reference Types</h2>
+						<p>참조(reference)로 전달되는 데이터 타입</p>
+						 <!-- 참조는 참조 타입 데이터의 주소이지 해당 데이터의 값이 아님
+						크기가 정해져 있지 않고 변수에 할당될 때 값이 직접 해당 변수에 저장될 수 없으며, 변수에는 데이터에 대한 참조만 저장 -->
+						<ul>
+							<li>Object</li>
+							<li>Function</li>
+							<li>Array</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>원시 타입 복사</h2>
+						<p>변수에 원시 타입 데이터를 할당하면 데이터의 값을 복사</p>
+						<!-- 변수에 있는 값이 복사되어 다른 변수에 저장 -->
+
+						<pre><code class="js">
+var a = 10;     // 변수 a 선언, 값을 10으로 초기화
+
+var b = a;      // 새로운 변수에 a값을 복사
+
+b = 20;         // b 변수에 저장된 값을 변경하면
+
+// 데이터 값을 복사해서 전달하기 때문에 a의 값은 영향을 받지 않음
+
+console.log(a); // 10
+console.log(b); // 20
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>참조 타입 복사</h2>
+						<p>변수 간 참조 타입 데이터를 할당하면 데이터를 참조로 복사</p>
+
+
+						<pre><code class="js">
+var x = { count: 100 };   // 참조 타입(객체) 변수 선언
+
+var y = x;   // y를 선언하고 x변수 할당, 두 변수는 동일한 주소를 가짐
+
+x.count = 99;
+
+// x, y 모두 같은 객체를 가르키고 있기 때문에 변경 시 동일한 값을 가짐
+
+console.log(y.count); // 99
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>원시타입 참조 타입의 비교</h2>
+
+<!--
+이제 [10] === [10] 예제에 대해
+객체를 비교할 때 항등 연산자 ( === )는 동일한 주소를 가리키는 지 확인합니다. 따라서 [10]과 [10]이 두 개의 다른 배열 인 경우 결과는 마지막 예제에서와 같이 거짓 입니다. 두 개의 배열 또는 객체의 값을 비교하려는 경우 간단하지만 제한된 해결책이 있습니다.
+
+JSON.stringify (a) === JSON.stringify (b)
+두 객체 / 배열의 속성이 같은 순서가 아니면 false를 반환합니다. 보다 견고한 솔루션을 원할 경우 lodash _.isEqual () 메소드를 사용할 수 있습니다 . 또는이 stackoverflow 대답 에서 설명한대로 자신의 솔루션을 구현하십시오 .
+
+https://stackoverflow.com/questions/1068834/object-comparison-in-javascript
+
+
+만약 서로 다른 객체가 같은 속성값을 갖고 있는지 알기 위한 가장 쉬운 방법은 두 객체를 string으로 변환한 후 비교하는 것입니다. 일치 연산자는 원시값을 비교할 때 단순히 값이 같은지만 비교하기 때문입니다.
+
+    var arr1str = JSON.stringify(arr1);
+    var arr2str = JSON.stringify(arr2);
+
+    console.log(arr1str === arr2str); // true
+
+또 다른 방법으로는 객체를 재귀적으로 반복문을 돌려 각각의 속성값이 같은지 확인할 수도 있습니다. -->
+
+
+
+						<pre><code class="js">
+var str1 = 'hello';
+var str2 = 'hello';
+console.log(str1 === str2); // true
+
+
+
+동등 연산자(`==`)와 일치 연산자(`===`)를 참조 타입의 변수에 사용됐을 때,
+이 연산자들은 참조를 확인합니다.
+만약 변수들이 같은 아이템에 대한 참조를 가지고 있다면, 비교 값은 `true`가 될 것입니다.
+var obj1 = { name:'kim' };
+var obj2 = obj1;
+console.log(obj1 === obj2); // true
+
+
+//같은 속성값을 갖고 있다고 할지라도 별개의 객체라면 이들의 비교 값은 false가 됩니다.
+var obj1 = { name:'kim' };
+var obj2 = { name:'kim' };
+console.log(obj1 === obj2); // false
+
+var arr1 = ['Hi!'];
+var arr2 = ['Hi!'];
+
+console.log(arr1 === arr2); // -> false
+
+
+var arr1str = JSON.stringify(obj1);
+var arr2str = JSON.stringify(obj2);
+
+console.log(arr1str === arr2str); // true
+
+                        </code></pre>
+					</section>
+
+
+
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>함수 (Function)</h2>
+					</section>
+
+					<section>
+						<h2>함수 선언</h2>
+						<ul>
+							<li>함수는 반복 가능한 코드 블록</li>
+							<li>다른 인수를 사용하여 호출, 재사용 가능한 코드</li>
+							<li>return 문을 이용해서 값을 반환 할 수 있고, 반환값이 없을 경우 undefined 반환</li>
+						</ul>
+
+
+						<!-- <p>주로 반복적으로 사용되는 구문을 미리 작성해 두고 필요할 때 호출</p> -->
+						<!-- 반복적인 작업을 줄여 주므로 개발 효율과 코드의 양을 줄여 주는데 많은 도움이 됩니다. -->
+						<pre><code class="js">
+function 함수이름 (parameter1, parameter2,...) {
+    //code
+}
+                        </code></pre>
+						<pre><code class="js">
+function add (a, b) {
+	return a + b;
+}
+
+//함수 호출
+add(10, 20); //30
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>함수 표현</h2>
+						<p>모든 함수가 이름을 가질 필요는 없음. 이 같은 함수를 익명 함수<br>일반적으로 변수에 함수를 저장해서 사용</p>
+						<pre><code class="js">
+var add = function (a, b) {
+    return a + b;
+};
+
+add(10, 20); //30
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>함수 호이스팅</h2>
+						<p>함수 선언 - 선언 순서와 상관없이 어디서나 호출이 가능</p>
+						<!--
+						함수선언식으로 정의된 함수는 자바스크립트 엔진이 스크립트가 로딩되는 시점에 바로 초기화하고 이를 VO(variable object)에 저장한다. 즉, 함수 선언, 초기화, 할당이 한번에 이루어진다. 그렇기 때문에 함수 선언의 위치와는 상관없이 소스 내 어느 곳에서든지 호출이 가능하다.
+
+                        함수표현식은 함수선언식과는 달리 스크립트 로딩 시점에 변수 객체(VO)에 함수를 할당하지 않고 runtime에 해석되고 실행되므로 이 두가지를 구분하는 것은 중요하다.
+ 						-->
+					<pre><code class="js">
+foo(); //hello
+
+function foo() {
+    console.log('hello');
+}
+                    </code></pre>
+                    <p>함수 표현 - 정의되기 전 코드에서 먼저 호출 할 수 없음</p>
+					<pre><code class="js">
+foo(); //TypeError: foo is not a function
+
+var foo = function() {
+    console.log('hello');
+};
+                        </code></pre>
+					</section>
+
+					<section>
+						<p>함수 표현 구문을 해석해보면</p>
+						<p>foo 호출하려고 할 때 foo는 함수가 아니라 단순히 선언된 변수일 뿐</p>
+                        <pre><code class="js">
+var foo;
+
+foo(); //TypeError: foo is not a function
+
+foo = function() {
+    console.log('hello');
+};
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>함수선언 vs 함수표현</h2>
+						<ul>
+							<li>함수 선언은 호출 전 반드시 선언해야 한다는 규칙 무시</li>
+							<li>코드 구조를 엉성하게 만들 수 있고, 코드를 해석하는데 있어 혼란</li>
+							<li>함수 선언은 항상 최상위에 작성, 함수 표현 사용을 권장</li>
+						</ul>
+						<p>이러한 차이점을 인지한 상태에서<br>일관된 코딩 컨벤션으로 작성하는 게 중요</p>
+					</section>
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>호출 스택 (Call Stack)</h2>
+					</section>
+
+					<section>
+						<h2>자바스크립트 엔진</h2>
+						<p>구글의 V8 엔진 (크롬, 노드)</p>
+						<ul>
+							<li>메모리 힙 — 메모리 할당이 일어나는 영역</li>
+							<li>호출 스택 — 코드가 실행될 때 호출 스택이 쌓이는 영역</li>
+						</ul>
+						<div><img src="img/memory_call_stack.png" alt="" style="margin-top: 40px" width="32%"></div>
+					</section>
+
+					<section>
+						<h2>단일 호출 스택</h2>
+						<p>자바스크립트는 싱글 스레드 기반 언어, 한 번에 단 하나의 일만 처리</p>
+						<ul>
+							<!-- <li>호출 스택은 현재 작업의 위치를 기록하는 자료구조</li> -->
+							<li>Last In First Out (LIFO) 데이터 구조 원칙에 따라 작동</li>
+							<li>함수를 호출하면 순차적으로 스택 상단으로 쌓이고</li>
+							<li>실행이 끝나게 되면 스택에서 함수를 제거</li>
+						</ul>
+					</section>
+
+
+					<section>
+                        <pre style="width:70%"><code class="js">
+function multiply(x, y) {
+    return x * y;
+}
+function printSquare(x) {
+    var s = multiply(x, x);
+    console.log(s);
+}
+printSquare(5);
+                        </code></pre>
+						<div><img src="img/callstack.png" alt="" style="width:70%"></div>
+					</section>
+
+
+					<section>
+						<p>스택 오버플로우</p>
+						<!-- 종료 조건 없이 자신을 계속해서 호출
+						함수의 스택 프레임이 계속해서 호출 스택에 쌓이게 됩니다. -->
+
+                        <pre style="width:70%"><code class="js">
+function foo() {
+    foo();
+}
+foo();
+                        </code></pre>
+						<div><img src="img/overflowstack.png" alt="" style="width:70%"></div>
+					</section>
+
+
+					<section>
+						<p>호출 스택의 실제 크기를 초과하게 되고<br>브라우저는 다음과 같은 오류를 발생시키는 것으로 함수 종료</p>
+						<div><img src="img/overflowstack_error.png" alt="" style="width:50%"></div>
+					</section>
+
+
+					<section>
+						<h2>단일 호출 스택의 문제점</h2>
+						<p>이렇게 자바스크립트는 다른 함수가 실행되고 있을때는 그 함수가 종료되기 직전까지 다른 작업이 중간에 끼어들 수 없음</p>
+
+“뭐야, 그럼 결국 동시실행이 불가능하다는 이야기잖아.”
+하고 실망할 수 있겠지만, 자바스크립트는 자바스크립트 엔진으로만 돌아가는 것이 아니다.
+
+
+자바스크립트에서는 하나의 호출 스택만 있기 때문에,
+하나의 함수 처리가 엄청 느려서 다른 함수 실행에 지장을 줄 때는 어떻게 해야 할까요?
+
+
+예를 들어, 브라우저에서 복잡한 이미지 처리를 한다고 생각해봅시다.
+앞서 배운 호출 스택의 동작 방식을 생각 해볼 때, 이미지 처리 작업 스택을 차지하고 있으면 자바스크립트는 후속 작업들을 처리할 수 없습니다.
+싱글 스레드, 단일 호출 스택이기 때문입니다.
+
+
+문제는 이것뿐만이 아닙니다.
+브라우저가 호출 스택에서 많은 작업을 처리하기 시작하면 꽤 오랜 시간 동안 응답을 멈출 수 있습니다.
+대부분의 브라우저는 이 상황에서 웹 페이지를 종료할지 여부를 묻는 오류 메시지를 표시합니다.
+그렇다면 해결 방법은 무엇일까요?
+					</section>
+
+
+					<section>
+						<h2>비동기 콜백</h2>
+						<!-- <p>코드 일부를 실행하고 나중에 실행될 콜백(함수)를 제공</p> -->
+						<p>먼저 실행된 코드가 완료되기 전 나중에 실행된 코드가 먼저 끝날 수 있음</p>
+                        <pre><code class="js">
+function first() {
+    setTimeout(function() {
+        console.log('1');
+    }, 1000);
+}
+function second() {
+    setTimeout(function() {
+        console.log('2');
+    }, 3000);
+}
+
+second(); //second() 함수를 먼저 호출했지만.. 결과는 1, 2 순서로 출력
+first();
+//1
+//2
+                        </code></pre>
+					</section>
+
+
+
+					<section>
+						<h2></h2>
+						자바스크립트는 한번에 하나의 작업밖에 수행하지 못한다는 의미
+						그런데 이상하다.
+						자바스크립트는 위의 간단한 예제는 물론이고,
+						Ajax로 데이터를 불러오면서 Mouseover 이벤트를 처리하면서 애니메이션을 동작시킨다.
+						어떻게 이런 동시성이 가능한 것일까?
+
+						위와 같은 문제를 해결하기 위해서 javascript는 멀티스레드 프로그래밍을 지원하는 것이 아니라,
+						싱글쓰레드에서 비동기적 프로그래밍을 javascript 실행환경의 API로 지원 한다.
+					</section>
+
+
+					<section>
+						<h2>실행 환경 (Runtime)</h2>
+						사실 자바스크립트 엔진 밖에서도 자바스크립트 실행에 관여하는 요소들이 존재한다.
+						Web API와 Task Queue, Event Loop 이다. 비동기 작업 시 각 요소의 역할에 대해 알아보자.
+
+						사실 브라우저는 단순히 자바스크립트 엔진 하나만으로 구성되어 있지 않습니다.
+						DOM, AJAX, setTimeout 등의 브라우저에서 제공하는 Web API라고 하는 것들이 있습니다.
+						이러한 Web API의 호출을 통제하기 위한 Event Queue와 Event Loop도 존재
+
+						웹 API(Web APIs)라는 것은 무엇일까요?
+						핵심만 말하면 이들은 개발자가 접근할 수 없는 쓰레드이며 호출만 가능합니다 명령어들입니다.
+						여기가 브라우저에서 동시성이 확보되는 지점
+						<img src="img/runtime.png" alt="" width="70%">
+					</section>
+
+
+
+					<section>
+						<p>어떻게 비동기로 작동하는지 살펴보기</p>
+                        <pre><code class="js">
+setTimeout(function() {
+    console.log('작업완료');
+}, 5000);
+                        </code></pre>
+					</section>
+
+					<section>
+						<p>코드가 실행되고 콜스택 에는 setTimeout 함수가 추가</p>
+						<img src="img/settimeout1.png" alt="" width="70%">
+					</section>
+					<section>
+						<p>setTimeout 함수는 자바스크립트 엔진이 처리하지 않고,<br>Web API에서 처리, setTimeout 작업 요청과 Callback 함수 전달</p>
+						<img src="img/settimeout2.png" alt="" width="70%">
+					</section>
+					<section>
+						<p>콜스택에서는 작업이 완료되고 setTimeout 작업 제거<br>브라우저가 Web API의 타이머를 생성, 이 타이머가 카운트다운 처리</p>
+						<img src="img/settimeout3.png" alt="" width="70%">
+					</section>
+					<section>
+						<p>5초가 지나고, Web API는 콜백 함수를 이벤트 큐(콜백 큐)에 밀어 넣음</p>
+						<img src="img/settimeout4.png" alt="" width="70%">
+					</section>
+					<section>
+						<p>이벤트 루프는 항상 콜스택이 비어있는지, 이벤트 큐(콜백 큐)에 작업이 있는지 검사<br>콜스택이 비워지지 않는다면, 큐에 쌓여있는 작업을 처리할 수 없음</p>
+						<img src="img/settimeout5.png" alt="" width="70%">
+					</section>
+					<section>
+						<p>콜스택이 비어있으므로 이벤트 큐(콜백 큐)에서 대기하던 콜백 함수 전달</p>
+						<img src="img/settimeout6.png" alt="" width="70%">
+						<!-- <p>콜백 함수 작업도 완료되어 제거되고 프로그램 종료</p> -->
+					</section>
+
+
+					<section>
+						<p>setTimeout의 delay를 0으로 주더라도 0초 보다 더 걸리는 이유는?</p>
+						<!-- <p>0 이면 바로 실행되야 하는것 아닐까?</p> -->
+						<!-- <p>콜스택에서 모든 작업이 실행될 때까지 기다려야하기 때문</p> -->
+                        <pre><code class="js">
+setTimeout(function() {
+	console.log('first');
+}, 0);
+console.log('second');
+
+// second
+// first
+                        </code></pre>
+                        <ul>
+                        	<li>setTimeout은 콜스택에서 실행된 후 </li>
+                        	<li>Web API의 Timeout API를 호출</li>
+                        	<li>Web API에 의해 setTimeout의 콜백함수는 이벤트 큐에 추가 </li>
+                        	<li>console.log('second')가 콜스택에 쌓이고 </li>
+                        	<li>second가 실행된 후 콜스택이 비었을 때 first가 콘솔창에 출력</li>
+                        </ul>
+
+						<!-- 만약 addEventlitenser('click', clickHandler) 라면 클릭되는 순간 Web API가 이벤트 큐에 clickHandler를 추가 -->
+					</section>
+
+
+					<section>
+Web API의 역할은 콜스택의 일들을 처리하는 메인 쓰레드 대신 비동기적으로 처리해야 할 일을 대신 처리
+
+타이머, 서버의 요청을 기다린다 던지, DOM에서 발생할 수 있는 이벤트를 기다리는 등의 일들을 처리
+
+개발자가 해야할 일은 이런 머리아픈 비동기적 작업을 API에게 맡기고, 비동기적 작업 결과에 따라 처리해야 할일을 Callback에 담아주기만 하면 되는것이다.
+
+싱글 쓰레드이지만 동시성작업이 필요한 작업들을 JavaScript API를 통해 대신처리하므로, 메인 쓰레드는 막히지 않고(Non blocking) 동작
+
+					</section>
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>유효범위 (Scope)</h2>
+					</section>
+
+					<section>
+						<h2>자바스크립트의 유효범위</h2>
+						<ul>
+							<li>전역 (Global Scope) - 코드 어디에서든지 참조</li>
+							<li>지역 (Local Scope or Function-Level Scope) - 정의된 함수 내에서만 참조</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>전역변수 (Global Scope)</h2>
+						<ul>
+							<li>자바스크립트는 특별한 시작점이 없음. 코드가 나타나는 즉시 해석되고 실행</li>
+							<li>글로벌 영역에 변수를 선언하면 어디에서든지 참조할 수 있는 전역변수</li>
+						</ul>
+						<p></p>
+
+						<!--
+						글로벌 영역에 변수를 선언하면 이 변수는 어느 곳에서든지 참조할 수 있는 global scope를 갖는 전역 변수가 된다.
+						하지만 자바스크립트는 다른 언어와는 달리 특별한 시작점이 없으며 코드가 나타나는 즉시 해석되고 실행된다.
+						 따라서 글로벌 영역에 변수를 선언하기 쉬우며 이것는 전역 변수를 남발하게 하는 문제를 야기시킨다.
+
+						전역 변수의 사용은 변수명의 중복 등 여러 문제를 발생시키므로 가급적 사용을 억제하여야 한다. -->
+						<pre><code class="js">
+	//Global Scope
+	var global = 'global'; //전역변수
+
+	function foo() {
+		console.log(global); //global
+	}
+	foo();
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>Non Block-Level Scope</h2>
+						<p>var로 선언된 변수는 Block-Level Scope를 사용하지 않으므로 x는 전역 변수</p>
+
+						<!-- 변수 x는 코드 블럭 내에서 선언되었다.
+						하지만 자바스크립트는 block-level scope를 사용하지 않으므로
+						function 밖에서 선언된 변수는 코드 블럭 내에서 선언되었다할지라도 모두 global scope을 갖게된다.
+						따라서 변수 x는 전역 변수이다. -->
+
+						<pre><code class="js">
+	//Global Scope
+	if (true) {
+		var x = 5; //전역변수
+	}
+	console.log(x); //5
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>지역변수 (Function-Level Scope)</h2>
+						<ul>
+							<li>함수 내에 선언된 변수, 매개변수(parameter)는 해당 함수 내부에서만 사용 가능</li>
+							<li>함수 외부에서는 유효하지 않음</li>
+						</ul>
+						<pre><code class="js">
+	function foo() {
+		//Local Scope
+		var local = 'local'; //지역변수
+		console.log(local); //local
+	}
+	foo();
+	console.log(local); //ReferenceError: local is not defined
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>전역변수, 지역변수 동일한 이름 사용 시</h2>
+						<ul>
+							<li>지역변수를 우선하여 참조 (각기 다른 변수 객체가 생성)</li>
+							<li>혼란을 줄 수있는 동일한 변수 네이밍은 가급적 사용하지 않는 것이 좋음</li>
+						</ul>
+						<pre><code class="js">
+	var global = 'global';
+
+	function foo() {
+		var global = 'local';
+	  	console.log(global); //local
+	}
+	foo();
+	console.log(global); //global
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>스코프 체인 (Scope Chain)</h2>
+						<p>변수를 찾을 때 스코프 체인을 거슬러 올라가며 추적<br>스코프 체인에서 가장 처음 발견한 변수의 값 반환</p>
+
+						<!--
+						func2 함수에서 참조한 변수는 지역 스코프에 없을 경우 스코프 체인에서 변수를 검색하게 되며
+						스코프 체인을 검색할 때는 가장 처음 발견한 값을 반환
+
+						스코프 체인을 통해 해당 변수들을 찾게 되고
+						number3, number2, number1의 순서로 접근하여 값을 func2 함수로 전달하여 연산을 수행
+
+						func2 함수에서 number1, number2, number3 변수를 찾게 되고,
+						이 값이 없으면 부모 함수인 func1 에서 검색을 하게 되고 여기에도 없으면
+						func1 부모 함수가 없기 때문에 전역 스코프에서 값을 찾게 됩니다.
+						전역 스코프에서 변수를 발견하게 되면 이 값을 func2로 전달하게 되는 것을 자바스크립트 스코프 체인의 핵심 역할
+ 						-->
+
+						<pre><code class="js">
+	var number1 = 1;
+	//③ func1 부모함수가 없기 때문에 전역 스코프에서 값을 찾음
+
+	function func1(){ //② 여기에도 없으면
+		var number2 = 2;
+
+		function func2(){
+			var number3 = 3;
+			//① 지역 스코프에서 number1, number2, number3 변수를 찾음
+			//값이 없으면 부모 함수인 func1에서 검색
+			console.log(number1 + number2 + number3); //6
+		}
+		func2();
+	}
+	func1();
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>클로저 (Closure)</h2>
+						<ul>
+							<li>내부함수는 외부함수의 지역변수에 접근 가능</li>
+							<li>add()함수가 종료되더라도 내부변수 스코프 객체는 그대로 유지되는 클로저의<br>속성을 이용</li>
+							<li>클로저를 이용해 비공개 멤버(private) 생성</li>
+						</ul>
+
+
+						<!--
+						add()를 호출해서 생성된 객체를 foo에 할당
+						foo() 호출될 때 이전에 증가된 값이 유지되어 두 번째 호출의 시작값이 됩니다.
+						add()함수 호출이 종료되더라도 내부변수 스코프 객체는 그대로 유지되는 클로저의 속성을 그대로 이용
+						다시 한번 add()를 호출해서 새로운 인스턴스를 bar에 할당한 후 호출해서 결과를 보면
+						내부 변수 counter가 새롭게 초기화됐다는 사실로 앞의 클로저와는 다른 닫힌 환경을 가진 새로운 인스턴스가 생성됐음을 알 수 있습니다.
+
+						클로저를 호출하면 단순히 객체가 반환되는 것이 아닙니다.
+						객체와 함께 그것과 연결된 닫힌 공간이 함께 반환되는 것입니다.
+						그리고 그 닫힌 공간에 내부 변수가 존재합니다.
+
+						클로저(closure)는 내부함수와 밀접한 관계를 가지고 있는 주제다.
+						이제 비공개 멤버와 공개 멤버를 가진 객체를 구현하는 패턴화된 기법
+						자바스크립트에서도 일반 객체지향 언어에서의 객체와 유사한 구조의 객체를 만들어낼 수 있습니다.
+
+						자바스크립트에는 private 함수나 변수의 개념이 없다.
+						클로저는 자바스크립트를 이용한 고난이도의 테크닉을 구사하는데 필수적인 개념으로 활용된다. -->
+
+						<pre><code class="js">
+	function add() {
+		var counter = 0; //counter는 외부에서 접근할 수 없는 비공개 멤버 (private)
+
+		return function() { //반환된 객체를 통해 외부에 공개
+			return ++counter;
+		};
+	}
+	var foo = add(); //인스턴스 foo 생성
+	foo(); //1
+	foo(); //2
+
+	var bar = add(); //인스턴스 bar 생성 (새롭게 반환되는 인스턴스로 counter 초기화)
+	bar(); //1
+	bar(); //2
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>var 생략 시 암묵적 전역</h2>
+						<p>전역 스코프에서 변수 x를 찾고 존재하지 않으면<br>변수 x를 암묵적으로 전역변수로 선언</p>
+						<pre><code class="js">
+	function foo() {
+		x = 1; //var 생략 시 전역변수
+		var y = 2;
+	}
+	foo();
+
+	console.log(x); //1
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>변수명의 중복</h2>
+						<ul>
+							<li>파일이 분리되어 있어도 글로벌 스코프는 하나</li>
+							<li>글로벌 스코프에 선언된 변수나 함수는 코드 내의 어디서든지 접근 가능</li>
+							<li>반드시 var를 붙여서 변수 선언 (예상치 못한 결과 발생)</li>
+						</ul>
+						<pre class="vertical"><code class="js">
+	//x.js
+	function foo (){
+		// var i = 0;
+		i = 0;
+	}
+                        </code></pre>
+                        <pre class="vertical"><code class="js">
+	//y.js
+	for(var i = 0; i < 5; i++){
+		foo();
+		console.log(i); //무한 루프
+	}
+                        </code></pre>
+
+                    	<pre style="margin:0 auto"><code class="html">
+	&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+	&lt;body&gt;
+		&lt;script scr="x.js"&gt;&lt;/script&gt;
+		&lt;script scr="y.js"&gt;&lt;/script&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>Javascript의 문제점</h2>
+						<p>전역변수 사용으로 인해 잠재적인 오류가 발생 할 수 있음</p>
+
+                        <ul>
+                            <li>글로벌 스코프가 쉽게 오염</li>
+                            <li>동일한 이름을 가진 변수 사용</li>
+                            <li>올바른 의존성 순서</li>
+                            <li>필요한 코드와 필요하지 않는 코드를 구분하는 것이 매우 어려운 일</li>
+                        </ul>
+
+
+					</section>
+
+<!--
+자바스크립트에서 가장 큰 문제점 중의 하나는 파일이 분리되어 있다하여도
+글로벌 스코프가 하나이며 글로벌 스코프에 선언된 변수나 함수는 코드 내의 어디서든지 접근이 가능
+따라서 다른 스크립트 파일 내에서 동일한 이름으로 명명된 변수나 함수가 같은 스코프 내에 존재할 경우 원치 않는 결과를 가져올 수 있다.
+즉시실행함수 내에 처리 로직을 모아 두면 혹시 있을 수도 있는 변수명 또는 함수명의 충돌을 방지할 수 있어 이를 위한 목적으로 즉시실행함수를 사용되기도 한다. -->
+
+
+					<section>
+						<h2>최소한의 전역변수 사용</h2>
+						<p>다음과 같이 전역변수 객체 하나를 만들어 사용 (네임스페이스)</p>
+
+<!-- 프로그램의 복잡도가 증가하고 코드의 각 부분들이 별개의 파일로 분리되어 선택적으로 포함하게 되면,
+어떤 코드가 특정 네이스페이스나 그 내부의 프로퍼티를 처음으로 정의한다고 가정하기가 위험합니다.
+네임스페이스에 추가하려는 프로퍼티가 이미 존재할 수도 있고 따라서 내용을 덮어쓰게 될 지도 모릅니다.
+네임스페이스를 생성하거나 프로퍼티를 추가하기 전에 먼저 이미 존재하는지 여부를 확인하는 것이 최선 -->
+
+						<pre><code class="js">
+	//기존에 동일한 이름을 갖는 네임스페이스가 존재하는지 검사
+	//동일한 이름을 갖는 네임스페이스가 없을 경우에만 네임스페이스를 정의
+	if(typeof MYAPP === 'undefined') {
+		var MYAPP = {};
+	}
+
+	//위 코드를 간소화 하면 아래와 같이 작성
+	var MYAPP = MYAPP || {};
+
+	MYAPP.student = {
+		name: 'Kim',
+		gender: 'male'
+	};
+
+	console.log(MYAPP.student.name); //Kim
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>즉시 실행 함수</h2>
+						<ul>
+							<li>함수의 정의와 동시에 실행되는 함수</li>
+							<li>최초 한번만 호출, 다시 호출할 수 없음</li>
+							<li>이러한 특징을 이용하여 초기화에 사용, 글로벌 영역 오염 방지</li>
+						</ul>
+
+						<pre><code class="js">
+//익명 즉시 실행 함수
+(function () {
+	//code
+}());
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>즉시실행함수 전역변수 사용 억제</h2>
+						<ul>
+							<li>즉시 실행 함수는 즉시 실행되고 그 후 전역에서 바로 사라짐</li>
+							<li>전역변수를 만들지 않으므로 라이브러리 등에 자주 사용</li>
+						</ul>
+
+						<pre><code class="js">
+	(function() {
+		var MYAPP = MYAPP || {};
+		MYAPP.student = {
+			name: 'Kim',
+			gender: 'male'
+		};
+		console.log(MYAPP.student.name);
+
+		//code...
+	}());
+
+	console.log(MYAPP.student.name); //ReferenceError: MYAPP is not defined
+                        </code></pre>
+					</section>
+
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>객체지향 프로그래밍 (OOP)</h2>
+					</section>
+
+					<section>
+						<h2>객체지향 자바스크립트</h2>
+						<ul>
+							<li>JavaScript는 클래스라는 개념이 없음</li>
+							<li>프로토타입 기반(prototype-based)의 객체지향 언어</li>
+							<li>객체가 다른 객체에 속성들을 물려줄 수 있도록 하기 위해 프로토타입 사용<br>(코드 재활용)</li>
+						</ul>
+					</section>
+
+
+                    <section>
+                        <h2>JavaScript 프로토타입 (Prototype)</h2>
+                        <p>자바스크립트의 모든 객체는 자신의 부모 역할을 하는 객체와 연결 (__proto__ 숨은링크)<br>부모 객체의 프로퍼티, 메소드를 상속받아 사용 가능</p>
+                        <p>자기 자신을 생성하기 위해 사용된 객체 원형을 프로토타입</p>
+
+                        <!-- <ul>
+                        	<li>__proto__ (숨은링크) - 상위에서 물려받은 객체의 프로토타입에 대한 정보</li>
+                        	<li>prototype 속성 - 자신을 원형으로 만들어질 새로운 객체들. 즉 하위로 물려줄 연결에 대한 속성</li>
+                        </ul> -->
+                    </section>
+
+
+                    <section>
+                        <h2>Object.prototype</h2>
+                        <p>객체 리터럴 방식으로 생성된 객체의 경우 부모는 Object.prototype</p>
+                        <p>Object.prototype은 자바스크립트 모든 객체의 최상위 부모</p>
+                    </section>
+
+
+                    <section>
+                        <p>student 객체는 __proto__ 라는 숨겨진 내부 프로퍼티에<br>자신의 부모 Object.prototype 객체와 연결</p>
+                        <pre><code>
+    var student = {
+        name: 'Kim',
+        score: 90
+    };
+    console.log(student.valueOf()); //Object {name: "Kim", score: 90}
+                        </code></pre>
+
+                        <img src="img/proto.png" alt="">
+
+                        <aside class="notes">
+                        프로토타입은 새로운 객체가 생성되기 위한 원형이 되는 객체.
+
+                        ECMAScript spec에서는 자바스크립트의 모든 객체는 자신의 프로토타입을 가리키는 [[Protytpe]]이라는 숨겨진 내부 프로터피를 가지고 있으며,
+
+                        크롬, 파이어폭스 등에서는 __proto__ 프로퍼티로 구현되어 있습니다.
+
+                        student 객체의 __proto__ 프로퍼티가 가리키는 객체가 바로 Object.prototype 객체이며 hasOwnProperty(), toString(), valueOf() 등과 같은 모든 객체에서 호출 가능한 자바스크립트 기본 내장 메서드가 포함되어 있다.
+
+                        그 결과 student 객체는 student.valueOf(), student.toString()등을 마치 자신의 프로퍼티인 것처럼 상속받아 사용할 수 있다.
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>Object.prototype</h2>
+                        <img src="img/proto_object.png" alt="" style="width:70%">
+                    </section>
+
+
+                    <section>
+                        <h2>Array.prototype</h2>
+                        <p>배열 역시 __proto__ 라는 숨겨진 내부 프로퍼티에 자신의 부모 Array.prototype 객체와 연결<br>모든 배열에 존재하는 length, push(), pop().. 등과 같은 메서드들을 상속</p>
+                        <p></p>
+                        <pre><code>
+    var myArray = [];
+    console.log(myArray.length); //0
+                        </code></pre>
+
+                        <img src="img/proto_array.png" alt="">
+
+                        <aside class="notes">
+                        배열도 자바스크립트의 객체다. 자바스크립트의 모든 객체는 자신의 부모역할을 하는 객체와 연결되어 있기 때문에 배열 또한 Array.prototype 객체가 프로토타입이다.
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <h2>Array.prototype</h2>
+                        <img src="img/proto_object2.png" alt="" style="width:70%">
+                    </section>
+
+                    <section>
+                        <h2>Function.prototype</h2>
+                        <p>__proto__ 라는 숨겨진 내부 프로퍼티에 자신의 부모 Function.prototype 객체와 연결<br>
+                        함수는 prototype 속성을 이용해 또 다른 객체의 원형이 될 수 있음</p>
+                        <pre><code>
+    function sum(x, y) { ... }
+                        </code></pre>
+
+                        <img src="img/proto_function.png" alt="">
+
+                        <aside class="notes">
+						그래서 기존의 객체를 복사하여(cloning) 새로운 객체를 생성하는 프로토타입 기반의 언어입니다.
+						프로토타입 기반 언어는 객체 원형인 프로토타입을 이용하여 새로운 객체를 만들어냅니다.
+						이렇게 생성된 객체 역시 또 다른 객체의 원형이 될 수 있습니다.
+						프로토타입은 객체를 확장하고 객체 지향적인 프로그래밍을 할 수 있게 해줍니다.
+
+                        사실 function 함수엔 Prototype 객체를 가르키는 prototype 이란 프로퍼티가 하나 존재합니다.
+                        이 Prototype 객체에 공유되어  있는 프로퍼티와 메소드가 객체 생성시 해당 생성자 function 으로
+                        생성한 모든 인스턴스에서 공유됩니다.
+                        </aside>
+                    </section>
+
+                    <section>
+                    	<p>프로토타입은 객체를 확장하고 객체 지향적인 프로그래밍이 가능</p>
+						<pre><code class="js">
+	var Person = (function() {
+		//생성자 함수 Constructor
+		function Person(name) {
+			this._name = name;
+		}
+
+		//sayHi()함수를 하나만 만들어
+		//객체의 인스턴스들이 재사용을 위해서 프로토타입 안에 정의
+		Person.prototype.sayHi = function () {
+			console.log('Hi! ' + this._name);
+		};
+
+		return Person;
+	}());
+
+	var me = new Person('Kim'); //new 연산자를 통해 인스턴스를 me 생성
+	me.sayHi(); //Hi! Kim
+
+	var you = new Person('Lee'); //인스턴스 you 생성
+	you.sayHi(); //Hi! Lee
+	                    </code></pre>
+					</section>
+
+                    <section>
+                        <h2>Function.prototype</h2>
+                        <img src="img/proto_object3.png" alt="" style="width:90%">
+                        <p>자바스크립트의 모든 객체는 Object.prototype을 기반으로 확장<br>이런 구조로 객체를 확장하는 방식을 프로토타입 기반 프로그래밍</p>
+                    </section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>jQuery</h2>
+					</section>
+
+
+					<section>
+						<h2>jQuery 이제 한물 갔다고 하지만..</h2>
+						<p>아직 은퇴하지 않은 현역 입니다.<br>2018년 기준 상위 100만개의 웹 페이지중 74%가 jQuery 사용</p>
+						<div><a href="https://trends.builtwith.com/javascript/jQuery" target="_blank"><img src="img/jquery_using.png" alt="" style="width:80%"></a></div>
+					</section>
+
+
+					<section>
+						<h2><img src="img/jquery_logo.png" alt="" style="width:40%"></h2>
+						<ul>
+							<li>자바스크립트의 생산성을 향상 (자바스크립트 라이브러리)</li>
+							<li>자바스크립트 코드를 단순하게 유지, 크로스 브라우징 이슈를 쉽게 처리</li>
+							<li>HTML 문서(DOM) 탐색, 조작, 이벤트 핸들링, 애니메이션, Ajax</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h2>jQuery 사용 준비</h2>
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;body&gt;
+		//...
+		&lt;script scr="js/lib/jquery-1.9.1.min.js"&gt;&lt;/script&gt;
+		&lt;script scr="js/app.js"&gt;&lt;/script&gt;
+	&lt;/body&gt;
+                        </code></pre>
+                        <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	$(document).ready(function(){
+		//DOM이 완전히 로드되기 전까지 대기하다가 로드가 완료되면 실행
+	});
+	//OR
+	$(function(){
+		// Do something...
+	});
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>셀렉터 (Selector)</h2>
+						<ul>
+							<li>CSS 스타일의 Selector를 이용하여 요소를 선택</li>
+							<li>자바스크립트 DOM API보다 쉽고 강력하며 유연함</li>
+						</ul>
+					</section>
+
+
+					<section>
+					<p>여러개의 요소 선택, li 요소를 선택하고 이 요소들의 텍스트를 일괄 변경</p>
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;ul id="navigation"&gt;
+		&lt;li&gt;신세계몰&lt;/li&gt;
+		&lt;li&gt;이마트몰&lt;/li&gt;
+		&lt;li class="howdy"&gt;하우디&lt;/li&gt;
+	&lt;/ul&gt;
+                        </code></pre>
+                        <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	$(function(){
+		console.log($('li'));
+		$('li').text('SSG');
+	});
+                        </code></pre>
+					</section>
+
+					<section>
+						<h2>Pure JavaScript</h2>
+		                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var targets = document.getElementsByTagName('li');
+
+	for(var i = 0; i < targets.length; i++){
+		// text노드를 선택한 후, text를 변경
+		targets[i].firstChild.nodeValue = 'SSG';
+	}
+		                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>Tag, ID, Class Selector</h2>
+						<p>가능하면 ID selector를 사용<br>document.getElementById()를 사용하기 때문에 ID selector가 빠름</p>
+		                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	//Tag Selector
+	$('li');
+
+	//ID Selector
+	$('#container');
+
+	//Class Selector
+	$('.articles');
+		                    </code></pre>
+					</section>
+
+					<section>
+						<h2>DOM 탐색(Traversing)</h2>
+						<ul>
+							<li>자신의 1 level 상위에 속하는 요소를 부모 요소</li>
+							<li>1 level 하위에 속하는 요소를 자식 요소</li></li>
+							<li>특정 id를 기준으로 자식 element 목록을 탐색할 때는 .find()를 사용</li>
+						</ul>
+
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;ul id="navigation"&gt;
+		&lt;li&gt;신세계몰&lt;/li&gt;
+		&lt;li&gt;이마트몰&lt;/li&gt;
+		&lt;li class="howdy"&gt;하우디&lt;/li&gt;
+	&lt;/ul&gt;
+                        </code></pre>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	$('#navigation').find('.howdy').css('color', 'red');
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>DOM 조작(Manipulation)</h2>
+						<p>DOM에 새로운 요소를 추가/삭제, 복사, 속성 변경</p>
+
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;div class=&quot;item&quot;&gt;
+		&lt;h3 class=&quot;name&quot;&gt;미네랄 워터 생수&lt;/h3&gt;
+		&lt;button&gt;가격보기&lt;/button&gt;
+	&lt;/div&gt;
+                        </code></pre>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	//append() 새로운 요소 추가
+	var price = $('&lt;span&gt;할인적용가 2,520&lt;/span&gt;');
+	$('.item').append(price);
+
+	//remove() 요소 제거
+	$('button').remove();
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<p>DOM에 콘텐츠를 삽입할 때, 위치를 지정</p>
+
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	[before]
+	&lt;div class=&quot;item&quot;&gt;
+		[prepend]
+		&lt;h3 class=&quot;name&quot;&gt;미네랄 워터 생수&lt;/h3&gt;
+		&lt;button&gt;가격보기&lt;/button&gt;
+		[append]
+	&lt;/div&gt;
+	[after]
+                        </code></pre>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	$('.item').prepend(price); //선택 요소의 여는 태그 뒤
+	$('.item').append(price);  //선택 요소의 닫는 태그 앞
+	$('.item').before(price);  //선택 요소의 앞
+	$('.item').after(price);   //선택 요소의 뒤
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>Event</h2>
+						<p>이벤트를 바인딩하고 해당 이벤트가 발생했을 때 실행될 콜백 함수를 지정<br>버튼을 클릭하면 가격 보기, 버튼 삭제하기</p>
+
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;div class=&quot;item&quot;&gt;
+		&lt;h3 class=&quot;name&quot;&gt;미네랄 워터 생수&lt;/h3&gt;
+		&lt;button&gt;가격보기&lt;/button&gt;
+	&lt;/div&gt;
+                        </code></pre>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	$('button').on('click', function (e) {
+		var price = $('&lt;span&gt;할인적용가 2,520&lt;/span&gt;');
+		$('.item').append(price);
+		$('button').remove();
+	});
+	                    </code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>상품이 여러개 있을 경우, 모든 버튼요소가 제거, 가격이 변경</li>
+							<li>이벤트가 발생한 상품 버튼만 제거되고 가격이 표시 되도록 수정</li>
+						</ul>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	//$(this)는 $(e.target)
+	//closest() 메서드는 가장 근접한 상위 요소를 반환
+
+	$('button').on('click', function (e) {
+		var price = $('&lt;span&gt;할인적용가 2,520&lt;/span&gt;');
+		$(this).closest('.item').append(price);
+		$(this).remove();
+	});
+	                    </code></pre>
+					</section>
+
+					<section>
+						<h2>jQuery 플러그인 (Plug-in)</h2>
+						<p>기존 기능을 확장할 수 있게 도와주는 프로그램<br>자주 사용되는 기능들을 플러그인으로 제작해서 사용</p>
+					</section>
+
+					<section>
+						<h2>어떤 플러그인 사용해야 할까요?</h2>
+						<ul>
+							<li>오픈소스의 중요 요소들 - 안정성, 충분한 문서 (기능 설명, 데모, 브라우저 지원범위)</li>
+							<li>Github star 또는 fork 수</li>
+							<li>적극적인 유지 관리</li>
+							<li>외부 커뮤니티 (StackOverflow)에 그 플러그인에 대한 질문, 답</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>가로, 세로형 이미지 슬라이드 제작</h2>
+						<ul>
+							<li><a href="https://github.com/stevenwanderski/bxslider-4" target="_blank">bxSlider</a> 플러그인 적용</li>
+							<li>좌우버튼 클릭으로 이전, 다음 슬라이드 보기</li>
+							<li>첫번째에서 이전 버튼 클릭 시 '처음 슬라이드 입니다.' 알림메세지 출력</li>
+							<li>마지막에서 다음 버튼 클릭 시 '마지막 슬라이드 입니다.' 알림메세지 출력</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>가로형 슬라이드</h2>
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;div id=&quot;horizontal&quot; class=&quot;slide_wrapper&quot;&gt;
+		&lt;div class=&quot;slide_container&quot;&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_01.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_02.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_03.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_04.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_05.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_06.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;slide&quot;&gt;&lt;img src=&quot;http://static.ssgcdn.com/ui/sm/img/promotion/2016/160104_shopat/mobile/m_sa_07.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;button class=&quot;button_prev slide_button&quot;&gt;&lt;span class=&quot;blind&quot;&gt;이전&lt;/span&gt;&lt;/button&gt;
+		&lt;button class=&quot;button_next slide_button&quot;&gt;&lt;span class=&quot;blind&quot;&gt;다음&lt;/span&gt;&lt;/button&gt;
+	&lt;/div&gt;
+                        </code></pre>
+					</section>
+
+
+					<section>
+						<h2>bxSlider 적용</h2>
+						<pre><em class="file_name"><i class="devicons devicons-html5"></i>&nbsp;index.html</em><code class="html">
+	&lt;body&gt;
+		//...
+		&lt;script scr=&quot;http://static.ssgcdn.com/ui/ssg/js/lib/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;http://static.ssgcdn.com/ui/ssg/js/lib/jquery.bxslider.min.js&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+
+                        </code></pre>
+
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var welHorizontal = $('#horizontal');
+
+	welHorizontal.find('.slide_container').bxSlider();
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>bxSlider Options</h2>
+						<p><a href="https://bxslider.com/options/" target="_blank">bxSlider Options 보기</a></p>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var welHorizontal = $('#horizontal');
+
+	welHorizontal.find('.slide_container').bxSlider({
+		mode: 'horizontal', //슬라이드 모드
+		controls: false, //슬라이드 컨트롤 사용 여부
+		pager: false, //슬라이드 페이지
+		infiniteLoop: false //반복 재생
+	});
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>이전, 다음 버튼 이벤트 핸들러</h2>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var welHorizontal = $('#horizontal'),
+		welHorizPrev = welHorizontal.find('.button_prev'),
+		welHorizNext = welHorizontal.find('.button_next');
+
+	welHorizPrev.on('click', function() {
+		alert('처음 슬라이드 입니다.');
+	});
+
+	welHorizNext.on('click', function() {
+		alert('마지막 슬라이드 입니다.');
+	});
+	                    </code></pre>
+					</section>
+
+
+					<section>
+						<h2>bxSlider Public Methods</h2>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var oHorizontal = welHorizontal.find('.slide_container').bxSlider({
+		mode: 'horizontal',
+		controls: false,
+		pager: false,
+		infiniteLoop: false
+	});
+
+	oHorizontal.getSlideCount() //전체 슬라이드
+	oHorizontal.getCurrentSlide() //현재 활성화 슬라이드
+	oHorizontal.goToPrevSlide() //이전 슬라이드
+	oHorizontal.goToNextSlide() //다음 슬라이드
+	                    </code></pre>
+					</section>
+
+					<section>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	welHorizPrev.on('click', function() {
+		var curSlideIndex = oHorizontal.getCurrentSlide();
+
+		if(curSlideIndex === 0){
+			alert('처음 슬라이드 입니다.');
+		} else {
+			oHorizontal.goToPrevSlide();
+		}
+	});
+	welHorizNext.on('click', function() {
+		var curSlideIndex = oHorizontal.getCurrentSlide(),
+			lastSlideIndex = oHorizontal.getSlideCount() - 1;
+
+		if(curSlideIndex === lastSlideIndex){
+			alert('마지막 슬라이드 입니다.');
+		} else {
+			oHorizontal.goToNextSlide();
+		}
+	});
+	                    </code></pre>
+					</section>
+
+					<section>
+						<h2>세로형 슬라이드 bxSlider 적용</h2>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	var welVertical = $('#vertical'),
+		welVerticalPrev = welVertical.find('.button_top'),
+		welVerticalNext = welVertical.find('.button_bottom');
+
+	var oVertical = welVertical.find('.slide_container').bxSlider({
+		mode: 'vertical',
+		controls: false,
+		pager: false,
+		infiniteLoop: false
+	});
+	                    </code></pre>
+					</section>
+
+					<section>
+	                    <pre><em class="file_name"><i class="devicons devicons-javascript"></i>&nbsp;app.js</em><code class="js">
+	welVerticalPrev.on('click', function() {
+		var curSlideIndex = oVertical.getCurrentSlide();
+
+		if(curSlideIndex === 0){
+			alert('처음 슬라이드 입니다.');
+		} else {
+			oVertical.goToPrevSlide();
+		}
+	});
+	welVerticalNext.on('click', function() {
+		var curSlideIndex = oVertical.getCurrentSlide(),
+			lastSlideIndex = oVertical.getSlideCount() - 1;
+
+		if(curSlideIndex === lastSlideIndex){
+			alert('마지막 슬라이드 입니다.');
+		} else {
+			oVertical.goToNextSlide();
+		}
+	});
+	                    </code></pre>
+					</section>
+
+				</section>
+
+
+
+				<section>
+					<h1>감사합니다.</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>당
