@@ -904,8 +904,6 @@ console.log(y.count); // 99
 
 					<section>
 						<h2>원시타입 참조 타입 비교</h2>
-						<p>객체를 비교할 때 === 는 동일한 주소를 가리키는지 확인</p>
-
 						<pre><code class="js">
 // string 원시타입을 비교할 때 단순히 값이 같은지만 비교
 var str1 = 'hello';
@@ -922,20 +920,19 @@ console.log(obj1 === obj2); // true
 
 
 					<section>
+						<p>같은 속성값을 갖고 있더라도 별개의 객체라면 비교 값은 false</p>
 						<pre><code class="js">
-// 같은 속성값을 갖고 있다고 할지라도 별개의 객체라면 비교 값은 false
 var obj1 = { name: 'kim' };
 var obj2 = { name: 'kim' };
 console.log(obj1 === obj2); // false
+                        </code></pre>
 
-
-// 서로 다른 객체가 같은 속성값을 갖고 있는지 알기 위한 방법으로
-// 두 객체를 string으로 변환한 후 비교
-
+                        <p>같은 속성값을 갖고 있는지 알기 위한 방법으로<br>두 객체를 string으로 변환한 후 비교</p>
+						<pre><code class="js">
 var obj1str = JSON.stringify(obj1);
 var obj2str = JSON.stringify(obj2);
-console.log(obj1str === obj2str); // true
 
+console.log(obj1str === obj2str); // true
                         </code></pre>
 					</section>
 
@@ -1190,7 +1187,7 @@ setTimeout(function() {
 						<img src="img/settimeout5.png" alt="" width="70%">
 					</section>
 					<section>
-						<p>콜스택이 비어있으므로 이벤트 큐에서 대기하던 콜백 함수 전달</p>
+						<p>콜스택이 비어있어 이벤트 큐에서 대기하던 콜백 함수 전달</p>
 						<img src="img/settimeout6.png" alt="" width="70%">
 						<!-- <p>콜백 함수 작업도 완료되어 제거되고 프로그램 종료</p> -->
 					</section>
@@ -1249,13 +1246,13 @@ console.log('second');
 
 						전역 변수의 사용은 변수명의 중복 등 여러 문제를 발생시키므로 가급적 사용을 억제하여야 한다. -->
 						<pre><code class="js">
-	//Global Scope
-	var global = 'global'; //전역변수
+//Global Scope
+var global = 'global'; //전역변수
 
-	function foo() {
-		console.log(global); //global
-	}
-	foo();
+function foo() {
+	console.log(global); //global
+}
+foo();
                         </code></pre>
 					</section>
 
@@ -1269,11 +1266,11 @@ console.log('second');
 						따라서 변수 x는 전역 변수이다. -->
 
 						<pre><code class="js">
-	//Global Scope
-	if (true) {
-		var x = 5; //전역변수
-	}
-	console.log(x); //5
+//Global Scope
+if (true) {
+	var x = 5; //전역변수
+}
+console.log(x); //5
                         </code></pre>
 					</section>
 
@@ -1284,32 +1281,28 @@ console.log('second');
 							<li>함수 외부에서는 유효하지 않음</li>
 						</ul>
 						<pre><code class="js">
-	function foo() {
-		//Local Scope
-		var local = 'local'; //지역변수
-		console.log(local); //local
-	}
-	foo();
-	console.log(local); //ReferenceError: local is not defined
+function foo() {
+	//Local Scope
+	var local = 'local'; //지역변수
+	console.log(local); //local
+}
+foo();
+console.log(local); //ReferenceError: local is not defined
                         </code></pre>
 					</section>
 
 
 					<section>
 						<h2>전역변수, 지역변수 동일한 이름 사용 시</h2>
-						<ul>
-							<li>지역변수를 우선하여 참조 (각기 다른 변수 객체가 생성)</li>
-							<li>혼란을 줄 수있는 동일한 변수 네이밍은 가급적 사용하지 않는 것이 좋음</li>
-						</ul>
 						<pre><code class="js">
-	var global = 'global';
+var global = 'global';
 
-	function foo() {
-		var global = 'local';
-	  	console.log(global); //local
-	}
-	foo();
-	console.log(global); //global
+function foo() {
+	var global = 'local'; //지역변수를 우선하여 참조
+  	console.log(global); //local
+}
+foo();
+console.log(global); //global
                         </code></pre>
 					</section>
 
@@ -1330,20 +1323,21 @@ console.log('second');
 						전역 스코프에서 변수를 발견하게 되면 이 값을 func2로 전달하게 되는 것을 자바스크립트 스코프 체인의 핵심 역할
  						-->
 						<pre><code class="js">
-	var number1 = 1;
-	//③ func1 부모함수가 없기 때문에 전역 스코프에서 값을 찾음
+var number1 = 1;
+//③ func1 부모함수가 없기 때문에 전역 스코프에서 값을 찾음
 
-	function func1(){ //② 여기에도 없으면
-		var number2 = 2;
-		function func2(){
-			var number3 = 3;
-			//① 지역 스코프에서 number1, number2, number3 변수를 찾음
-			//값이 없으면 부모 함수인 func1에서 검색
-			console.log(number1 + number2 + number3); //6
-		}
-		func2();
+function func1(){ //② 여기에도 없으면
+	var number2 = 2;
+
+	function func2(){
+		var number3 = 3;
+		//① 지역 스코프에서 number1, number2, number3 변수를 찾음
+		//값이 없으면 부모 함수인 func1에서 검색
+		console.log(number1 + number2 + number3); //6
 	}
-	func1();
+	func2();
+}
+func1();
                         </code></pre>
 					</section>
 
